@@ -1,0 +1,4 @@
+.idea/
+/infra/mysql
+/src/vendor
+/nbproject/private/
