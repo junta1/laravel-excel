@@ -11,12 +11,10 @@ namespace Excel;
  */
 
 use Excel\Repositorio\PlanilhaRepositorio;
-use Rap2hpoutre\FastExcel\FastExcel;
+use Maatwebsite\Excel\Excel;
 
 class Planilha
 {
-    protected $execel;
-
     protected $repository;
 
     public function __construct(PlanilhaRepositorio $repository)
@@ -24,30 +22,33 @@ class Planilha
         $this->repository = $repository;
     }
 
-    public function exportFast()
+    public function export()
     {
-        $this->execel = new FastExcel($this->repository->all());
+        $dados = $this->repository->all();
 
-        return $this->execel->download('file.xlsx');
+        return \Excel::create('Planilha-ex', function ($excel) use ($dados){
+
+            $excel->sheet('Planilha 01', function ($sheet) use ($dados){
+                $sheet->setOrientation('portrait');
+
+                $sheet->fromArray($dados);
+            });
+
+        })->download('xls');
     }
 
-//    public function importFast()
-//    {
-//        $users = (new FastExcel)->import('file.xlsx', function ($line) {
-//            return User::create([
-//                'name' => $line['Name'],
-//                'email' => $line['Email']
-//            ]);
-//        });
-//
-//        $fastExcel = new FastExcel();
-//
-//        $import = $fastExcel->import('file.xlx', function ($line){
-//            return $this->repository->save([
-//                'plan_codigo_tarefa' => $line['CodigoTarefa']
-//            ]);
-//        });
-////
-//        return $import;
-//    }
+    public function import()
+    {
+        \Excel::load('/public/excel/planilha.XLSX', function ($reader) {
+            // Getting all results
+            $results = $reader->get();
+
+            dd($results);
+//            foreach ($results as $result) {
+//                dd($result);
+//            }
+
+        });
+    }
+
 }

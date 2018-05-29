@@ -25,11 +25,6 @@ class PlanilhaController extends Controller
 
     public function export()
     {
-        return $this->negocio->exportFast();
+        return $this->negocio->export();
     }
-
-//    public function import(Request $request)
-//    {
-//        return $this->negocio->importFast();
-//    }
 }
