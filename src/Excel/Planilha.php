@@ -35,6 +35,6 @@ class Planilha
 
 //        dd($this->execel);
 
-        return $this->execel->export('file.xlsx');
+        return $this->execel->download('file.xlsx');
     }
 }
