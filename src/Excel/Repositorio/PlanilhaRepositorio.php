@@ -25,8 +25,8 @@ class PlanilhaRepositorio
         return $this->model->all();
     }
 
-//    public function save(array $input)
-//    {
-//        return $this->model->create($input);
-//    }
+    public function save(array $input)
+    {
+        return $this->model->create($input);
+    }
 }

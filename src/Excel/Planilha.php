@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace Excel;
+
 /**
  * Created by PhpStorm.
  * User: administrador
@@ -9,18 +10,31 @@ namespace Excel;
  * Time: 01:58
  */
 
-use Excel\Model\PlanilhaModel;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Excel\Repositorio\PlanilhaRepositorio;
+use Rap2hpoutre\FastExcel\FastExcel;
 
-class Planilha implements FromCollection
+class Planilha
 {
-    public function __construct(PlanilhaModel $invoices)
+    protected $execel;
+
+    protected $repository;
+
+    public function __construct(PlanilhaRepositorio $repository)
     {
-        $this->invoices = $invoices;
+        $this->repository = $repository;
     }
 
-    public function collection()
+//    public function collection()
+//    {
+//        return $this->invoices->all();
+//    }
+
+    public function exportFast()
     {
-        return $this->invoices->all();
+        $this->execel = new FastExcel($this->repository->all());
+
+//        dd($this->execel);
+
+        return $this->execel->export('file.xlsx');
     }
 }

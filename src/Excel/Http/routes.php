@@ -1,3 +1,4 @@
 <?php
 
-Route::get('/excel','\Excel\Http\Controller\PlanilhaController@index');
+//Route::get('export','\Excel\Http\Controller\PlanilhaController@export');
+Route::get('export-fast','\Excel\Http\Controller\PlanilhaController@exportFast');
