@@ -24,17 +24,30 @@ class Planilha
         $this->repository = $repository;
     }
 
-//    public function collection()
-//    {
-//        return $this->invoices->all();
-//    }
-
     public function exportFast()
     {
         $this->execel = new FastExcel($this->repository->all());
 
-//        dd($this->execel);
-
         return $this->execel->download('file.xlsx');
     }
+
+//    public function importFast()
+//    {
+//        $users = (new FastExcel)->import('file.xlsx', function ($line) {
+//            return User::create([
+//                'name' => $line['Name'],
+//                'email' => $line['Email']
+//            ]);
+//        });
+//
+//        $fastExcel = new FastExcel();
+//
+//        $import = $fastExcel->import('file.xlx', function ($line){
+//            return $this->repository->save([
+//                'plan_codigo_tarefa' => $line['CodigoTarefa']
+//            ]);
+//        });
+////
+//        return $import;
+//    }
 }

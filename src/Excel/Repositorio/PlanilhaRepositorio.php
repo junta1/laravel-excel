@@ -27,6 +27,6 @@ class PlanilhaRepositorio
 
     public function save(array $input)
     {
-        return $this->model->create($input);
+        return $this->model->save($input);
     }
 }

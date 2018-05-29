@@ -11,18 +11,25 @@ namespace Excel\Http\Controller;
 use App\Http\Controllers\Controller;
 use Excel\Planilha;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Excel;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 
 class PlanilhaController extends Controller
 {
-//    public function export(Excel $excel, Planilha $export)
-//    {
-//        return $excel->download($export, 'planilha.xlsx');
-//    }
+    protected $negocio;
 
-    public function exportFast(Planilha $export)
+    public function __construct(Planilha $negocio)
     {
-        return $export->exportFast();
+        $this->negocio = $negocio;
     }
+
+    public function export()
+    {
+        return $this->negocio->exportFast();
+    }
+
+//    public function import(Request $request)
+//    {
+//        return $this->negocio->importFast();
+//    }
 }
