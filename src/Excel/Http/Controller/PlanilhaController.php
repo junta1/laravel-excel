@@ -27,4 +27,9 @@ class PlanilhaController extends Controller
     {
         return $this->negocio->export();
     }
+
+    public function import()
+    {
+        return $this->negocio->import();
+    }
 }

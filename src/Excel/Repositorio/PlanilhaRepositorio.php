@@ -27,6 +27,15 @@ class PlanilhaRepositorio
 
     public function save(array $input)
     {
-        return $this->model->save($input);
+        $this->model = new PlanilhaModel();
+
+        $this->model->plan_codigo_tarefa = $input['plan_codigo_tarefa'];
+        $this->model->plan_nome = $input['plan_nome'];
+        $this->model->plan_codigo_unidade = $input['plan_codigo_unidade'];
+        $this->model->plan_quantidade = $input['plan_quantidade'];
+        $this->model->plan_valor_unitario = $input['plan_valor_unitario'];
+        $this->model->plan_valor_parcial = $input['plan_valor_parcial'];
+
+        return $this->model->save();
     }
 }

@@ -17,12 +17,12 @@ class Planilha extends Migration
     {
         Schema::create('planilha', function (Blueprint $table) {
             $table->increments('id_planilha');
-            $table->string('plan_codigo_tarefa');
-            $table->string('plan_nome');
-            $table->string('plan_codigo_unidade');
-            $table->integer('plan_quantidade');
-            $table->double('plan_valor_unitario');
-            $table->double('plan_valor_parcial');
+            $table->string('plan_codigo_tarefa')->nullable();
+            $table->string('plan_nome')->nullable();
+            $table->string('plan_codigo_unidade')->nullable();
+            $table->integer('plan_quantidade')->nullable();
+            $table->double('plan_valor_unitario')->nullable();
+            $table->double('plan_valor_parcial')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
