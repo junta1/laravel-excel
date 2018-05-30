@@ -34,4 +34,4 @@ services:
       working_dir: /application
       volumes:
         - ./src:/application
-        - ./infra/php-fpm/php-ini-overrides.ini:/etc/php/7.0/fpm/conf.d/99-overrides.ini
+        - ./infra/php-fpm/php-ini-overrides.ini:/etc/php/7.1/fpm/conf.d/99-overrides.ini
